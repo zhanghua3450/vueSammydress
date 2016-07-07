@@ -1,12 +1,11 @@
 <template lang="html">
     <div class="loade-content">
-
         <pulse-loader :loading="loading" :color="color" :size="size"></pulse-loader>
     </div>
 </template>
 
 <script>
-    import pageHead from './header.vue';
+    import pageHead from '../components/header.vue';
     import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
     export default{
         data(){

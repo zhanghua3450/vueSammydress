@@ -72,9 +72,9 @@
       try: 3
     })
 
-    import pageHead from './header.vue';
+    import pageHead from '../components/header.vue';
     import { Swipe, SwipeItem } from 'vue-swipe';
-    import pageFooter from './footer.vue';
+    import pageFooter from '../components/footer.vue';
 
 
     require('vue-swipe/dist/vue-swipe.css');

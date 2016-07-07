@@ -10,7 +10,7 @@ module.exports = {
  //入口文件
   entry: {
   	app:'./static/src/main.js',
-  	vendor:['vue']
+  	vendor:['vue','zepto']
   },
   //输出
   output: {
@@ -71,7 +71,8 @@ module.exports = {
        //extensions:["",".vue",".js",".css"],
        alias:{
     		vue:'vue/dist/vue.min.js',
-    		'vue-router':'vue-router/dist/vue-router.min.js'
+    		'vue-router':'vue-router/dist/vue-router.min.js',
+        zepto:'webpack-zepto'
        }
   },
   //devtool: '#eval-source-map',
@@ -81,7 +82,8 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin('vendor', common.js),
     //全局变量
     new webpack.ProvidePlugin({
-        Vue: 'vue'
+        Vue: 'vue',
+        $:'zepto'
     }),
   ]
 }
