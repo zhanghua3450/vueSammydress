@@ -35,6 +35,7 @@
     "vue-lazyload": "^0.4.3",
     "vue-loader": "^8.2.1",
     "vue-router": "^0.7.13",
+    "vue-side-nav": "^0.1.5",
     "vue-spinner": "^1.0.2",
     "vue-style-loader": "^1.0.0",
     "vue-swipe": "^0.2.6",
