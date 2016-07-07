@@ -44,7 +44,7 @@ module.exports = {
      {
          test:/\.css$/,
          loader:ExtractTextPlugin.extract("style-loader", "css-loader")
-     }
+     },
     //   {
     //     test: /\.json$/,
     //     loader: 'json'
@@ -53,14 +53,14 @@ module.exports = {
     //     test: /\.html$/,
     //     loader: 'vue-html'
     //   },
-    //   {
-    //     test: /\.(png|jpg|gif|svg)$/,
-    //     loader: 'url',
-    //     query: {
-    //       limit: 10000,
-    //       name: '[name].[ext]?[hash]'
-    //     }
-    //   }
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'url',
+        query: {
+          limit: 10000,
+          name: '[name].[ext]?[hash]'
+        }
+      }
     ]
   },
   devServer: {
@@ -74,7 +74,7 @@ module.exports = {
     		'vue-router':'vue-router/dist/vue-router.min.js'
        }
   },
-  devtool: '#eval-source-map',
+  //devtool: '#eval-source-map',
   plugins:[
   	new ExtractTextPlugin(common.css),
   	 //公用js文件

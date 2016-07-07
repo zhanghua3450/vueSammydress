@@ -9,7 +9,6 @@ Vue.use(vueTouch);
 import './css/base_min.css';
 
 
-
 var router = new VueRouter({
 	hashbang: true,
     history: false,

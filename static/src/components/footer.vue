@@ -23,7 +23,7 @@
 		<div class="directory-column" :class="[curIndex == 0 ? 'on' : '' ]" >
 			<label class="select-label" v-touch:tap="toggole(0)">
 				<h3>USD</h3>
-				<i class="colum-icon fa fa-plus"></i>
+				<i class="colum-icon iconfont icon-jiahao1"></i>
 			</label>
 			<ul class="colum-list">
 				<li v-for="item in currencyItem" data-icon="{{item.icon}}" v-text="item.name"></li>
@@ -33,7 +33,7 @@
 		<div class="directory-column" v-for="item in footItems" :class="[curIndex == $index+1 ? 'on' : '' ]" >
 			<label class="select-label" v-touch:tap="toggole($index+1)">
 				<h3>{{item.title}}</h3>
-				<i class="colum-icon fa fa-plus"></i>
+				<i class="colum-icon iconfont icon-jiahao1"></i>
 			</label>
 			<ul class="colum-list">
 				<li v-for="list in item.lists">
