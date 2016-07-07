@@ -3,13 +3,13 @@ export default function(router){
 		'/': {
 	        name:'loadpage',
 	        component: function (resolve) {
-		      require(['../components/loadpage.vue'], resolve)
+		      require(['../view/loadpage.vue'], resolve)
 		    }
 	    },
 		'/home': {
 	        name:'home',
 	        component: function (resolve) {
-		      require(['../components/home.vue'], resolve)
+		      require(['../view/home.vue'], resolve)
 		    }
 	    }
 
