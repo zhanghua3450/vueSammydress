@@ -15,6 +15,13 @@
 			}
 
 		}
+	
+		.footLink{ text-align: center; line-height:40/32rem; 
+			a{color: #333; font-size: 14/32rem; text-decoration: none; padding: 0 15/32rem;
+				
+			}
+		}
+		.copyright{text-align: center; font-size: 12/32rem; color: #666;}
 	}
 </style>
 
@@ -42,7 +49,15 @@
 
 			</ul>
 		</div>
-
+		
+		<div class="footLink">
+			<a v-link="'home'">HOME</a>
+			
+			<a href="#">FULL SITE</a>
+		</div>
+		<div class="copyright">
+			<p>Copyright © 2011-2016 SammyDress.com. <br>All Rights Reserved.</p>
+		</div>
 
 	</footer>
 </template>
@@ -76,9 +91,7 @@
 			}
 		},
 		computed:{
-			isShow(){
-
-			}
+			
 		},
 		methods:{
 			toggole(index){

@@ -22,7 +22,9 @@
 			closeMenu(){
 				if(this.opened){
 					$('body').removeClass('scroll-hide');
-					this.opened = !this.opened;
+					setTimeout(()=>{
+						this.opened = !this.opened;
+					},100)
 				}
 				
 			}

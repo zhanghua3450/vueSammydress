@@ -14,7 +14,10 @@
 		</div>
 
 		<menu-sader :opened.sync = "opened">
-			<menu-list></menu-list>
+			
+			<menu-list :lists = "lists">
+				
+			</menu-list>
 		</menu-sader>
     </header>
     
@@ -40,20 +43,37 @@
 
 <script>
 	import menuSader from './menu.vue';
-
+	import menuList from './menu-list.vue';
+	
 	export default {
 		props:['fixed','showSearch'],
 		data(){
 			return {
-				'opened':false
+				'opened':false,
+				lists:[
+					{name:'My tree',
+						children:[
+							{name:'hello'},
+							{name:'wat'},
+							{name:'child folder',
+								children:[
+									{name:'hello'},
+									{name:'wat'}	
+								]
+							}
+						]
+					}
+					
+				]
 			}
 		},
+		
 		methods:{
 			toggle(){
 				$('body').addClass('scroll-hide');
 				this.opened = !this.opened
 			}
 		},
-		components:{menuSader}
+		components:{menuSader,menuList}
 	}
 </script>
