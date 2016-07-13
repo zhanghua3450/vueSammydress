@@ -1,8 +1,9 @@
 <style lang="less">
 	.menu-side{
 		.page-cover{position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 101;}
-		.menuBox{position: fixed; left: -200/32rem; top: 0; height: 100%; width: 200/32rem; background: #fff; z-index: 101; transition: all .5s ease; 
-			&.show{transform: translateX(200/32rem);}
+		
+		.menuBox{position: fixed; left: -250/32rem; top: 0; height: 100%; width: 250/32rem; padding: 5/32rem;background: #fff; z-index: 101; transition: all .5s ease; 
+			&.show{transform: translateX(250/32rem);}
 		}
 	}
 	

@@ -14,10 +14,7 @@
 		</div>
 
 		<menu-sader :opened.sync = "opened">
-			
-			<menu-list :lists = "lists">
-				
-			</menu-list>
+			<menu-list :lists = "lists"></menu-list>
 		</menu-sader>
     </header>
     
@@ -35,7 +32,7 @@
 		.memu,.cart{line-height: @iconH; display: flex; width: @iconH*2;
 			a{display: block; flex:1; width: @iconH; height: @iconH; text-align: center; font-size: 20/32rem; color: #333;}
 		}
-		&.show{transform: translateX(200/32rem);}
+		&.show{transform: translateX(250/32rem);}
 	}
 	.drag-handle{display: none !important;}
 	.scroll-hide{height: 100%; overflow: hidden;}
@@ -51,6 +48,18 @@
 			return {
 				'opened':false,
 				lists:[
+					{name:'My tree',
+						children:[
+							{name:'hello'},
+							{name:'wat'},
+							{name:'child folder',
+								children:[
+									{name:'hello'},
+									{name:'wat'}	
+								]
+							}
+						]
+					},
 					{name:'My tree',
 						children:[
 							{name:'hello'},
