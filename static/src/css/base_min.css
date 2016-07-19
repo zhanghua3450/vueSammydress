@@ -45,7 +45,7 @@ abbr,acronym { border:0}
 .dib{display: inline-block;}
 .vm{vertical-align: middle;}
 
-body{font-family: 'Lato', sans-serif;}
+body{font-family: 'Lato', sans-serif; }
 *{box-sizing: border-box;}
 #app{width: 10rem; margin-left: auto; margin-right: auto;}
-.pt50rem{padding-top: 1.5625rem;}
+.pt50rem{padding-top: 1.875rem;}

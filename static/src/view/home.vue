@@ -53,7 +53,7 @@
 
        <ul class="catList clearfix">
            <li v-for="cate in cateList">
-               <a :href="cate.url"><img :src="cate.src" ><p v-text="cate.name"></p></a>
+               <a v-link="{ name: 'list', params: { listId: cate.listId }}" ><img :src="cate.src" ><p v-text="cate.name"></p></a>
            </li>
        </ul>
 
