@@ -13,13 +13,14 @@
 		.item{display: flex;}
 		.iconfont{transition: all .5s;}
 		
-
+		
 	}
+
 </style>
 
 <template>
 	<ul class="menu-list" >
-		<li v-for="list in lists" :class="{'on':(curIndex == $index)}" >
+		<li v-for="list in lists" :class="{'on':(curIndex == $index)}">
 			<div class="item"><a>{{list.name}}</a><i  v-touch:tap="toggle($index,list.children)" class="iconfont icon-xiangyou1" v-if="list.children.length > 0" ></i></div>
 			<menu-list v-if="list.children.length > 0" :lists="list.children" ></menu-list>
 		</li>

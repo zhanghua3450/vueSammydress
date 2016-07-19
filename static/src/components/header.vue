@@ -79,6 +79,7 @@
 		
 		methods:{
 			toggle(){
+			
 				$('body').addClass('scroll-hide');
 				this.opened = !this.opened
 			}

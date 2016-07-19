@@ -30,18 +30,20 @@
       opacity: 1
     }
 
-    /* .expand-enter 定义进入的开始状态 */
+
     /* .expand-leave 定义离开的结束状态 */
     .expand-enter, .expand-leave {
       opacity: 0
     }
+   
 </style>
 
 <template>
    <div class="home-content" :class="{pt50rem:fix}"  transition="expand">
+      
        <page-head :fixed="fix" :show-search="showSearch"></page-head>
 
-       <div class="tips">NEW SIGN UPS GET 10% OFF</div>
+       <div class="tips" @click="showIndicator()">NEW SIGN UPS GET 10% OFF</div>
 
        <swipe class="swipe"  :auto="4000">
              <swipe-item   v-for="banner in bannerList">
@@ -51,7 +53,7 @@
 
        <ul class="catList clearfix">
            <li v-for="cate in cateList">
-               <a :href="cate.url"><img v-lazy="cate.src" ><p v-text="cate.name"></p></a>
+               <a :href="cate.url"><img :src="cate.src" ><p v-text="cate.name"></p></a>
            </li>
        </ul>
 
@@ -60,46 +62,51 @@
        </div>
 
        <page-footer></page-footer>
-
+      
    </div>
 </template>
 
 <script>
-    import lazyload from 'vue-lazyload';
-    Vue.use(lazyload, {
-      error: '/static/img/lazyload.gif',
-      loading: '/static/img/lazyload.gif',
-      try: 3
-    })
+    // import lazyload from 'vue-lazyload';
+    // Vue.use(lazyload, {
+    //   error: '/static/img/lazyload.gif',
+    //   loading: '/static/img/lazyload.gif',
+    //   try: 3
+    // })
 
     import pageHead from '../components/header.vue';
     import { Swipe, SwipeItem } from 'vue-swipe';
     import pageFooter from '../components/footer.vue';
 
+    import Indicator from 'vue-indicator';
+
+    import '../css/indicator.css';
+    
 
     require('vue-swipe/dist/vue-swipe.css');
-
 
     export default{
         data(){
             return{
                 fix:true,
-                bannerList:[
-                    {src:'http://uidesign.sammydress.com/S/images/promotion/Clearance/640x270ena.jpg', url:"#", width:640,height:270},
-                    {src:'http://uidesign.sammydress.com/S/images/promotion/Beautiful/640x270.jpg',url:"#", width:640,height:270},
-                    {src:'http://css.sammydress.com/imagecache/S/images/pageimg/special/dress/640.jpg',url:"#", width:640,height:270}
-                ],
-                cateList:[
-                    {url:"#",name:"women",src:'http://uidesign.sammydress.com/S/images/banner/sm/women.jpg'},
-                    {url:"#",name:"men",src:'http://uidesign.sammydress.com/S/images/banner/sm/men.jpg'},
-                    {url:"#",name:"Shoes",src:'http://uidesign.sammydress.com/S/images/banner/sm/shoes.jpg'},
-                    {url:"#",name:"bags",src:'http://uidesign.sammydress.com/S/images/banner/sm/bag.jpg'},
-
-                    {url:"#",name:"hair",src:'http://uidesign.sammydress.com/S/images/banner/sm/hair.jpg'},
-                    {url:"#",name:"JEWELRY",src:'http://uidesign.sammydress.com/S/images/banner/sm/jew.jpg'},
-                    {url:"#",name:"KIDS",src:'http://uidesign.sammydress.com/S/images/banner/sm/kids.jpg'},
-                    {url:"#",name:"HOME&GARDEN",src:'http://uidesign.sammydress.com/S/images/banner/sm/home.jpg'}
-                ]
+                bannerList:[ ],
+                cateList:[]
+            }
+        },
+        route:{
+            data:function(transition){
+                Indicator.open('Loading...');
+                this.$http.get('/static/json/index.json',{}).then(function(response) {
+                    
+                    transition.next({
+                       cateList: response.data.cateList,
+                       bannerList:response.data.bannerList
+                    });
+                    Indicator.close();
+                    
+                }, function(response) {
+                     console.log('failed')
+                })
             }
         },
         components:{pageHead,Swipe,SwipeItem,pageFooter}
