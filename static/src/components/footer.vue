@@ -90,9 +90,7 @@
 				]
 			}
 		},
-		computed:{
-			
-		},
+		
 		methods:{
 			toggole(index){
 				this.curIndex = this.curIndex == index ? '-1' : index;

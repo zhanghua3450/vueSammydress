@@ -11,7 +11,12 @@ export default function(router){
 	        component: function (resolve) {
 		      require(['../view/home.vue'], resolve)
 		    }
+	    },
+	    '/list/:listId': {
+	        name:'list',
+	        component: function (resolve) {
+		      require(['../view/list.vue'], resolve)
+		    }
 	    }
-
 	})
 }

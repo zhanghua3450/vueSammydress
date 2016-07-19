@@ -3,14 +3,14 @@ var webpack = require('webpack');
 //单独打包css文件
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var common ={
-	css:'css/common.min.css',
-	js:'js/common.min.js'
+  css:'css/common.min.css',
+  js:'js/common.min.js'
 }
 module.exports = {
  //入口文件
   entry: {
-  	app:'./static/src/main.js',
-  	vendor:['vue','zepto']
+    app:'./static/src/main.js',
+    vendor:['vue','zepto']
   },
   //输出
   output: {
@@ -70,15 +70,15 @@ module.exports = {
   resolve:{
        //extensions:["",".vue",".js",".css"],
        alias:{
-    		vue:'vue/dist/vue.min.js',
-    		'vue-router':'vue-router/dist/vue-router.min.js',
+        vue:'vue/dist/vue.min.js',
+        'vue-router':'vue-router/dist/vue-router.min.js',
         zepto:'webpack-zepto'
        }
   },
   //devtool: '#eval-source-map',
   plugins:[
-  	new ExtractTextPlugin(common.css),
-  	 //公用js文件
+    new ExtractTextPlugin(common.css),
+     //公用js文件
     new webpack.optimize.CommonsChunkPlugin('vendor', common.js),
     //全局变量
     new webpack.ProvidePlugin({
