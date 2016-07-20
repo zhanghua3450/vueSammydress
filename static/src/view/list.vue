@@ -10,6 +10,13 @@
 		li{line-height: 40/32rem; border-top: 1/32rem solid #ddd; padding-left: 10/32rem; padding-right: 10/32rem;}
 		a{color: #333; text-decoration: none; font-size: 14/32rem;}
 	}
+
+	.cate-filter{line-height: 30/32rem; height: 30/32rem; margin: 10/32rem;
+		a{width: 50%; display: block; float: left; color: #333; font-size: 14/32rem;  text-decoration: none;
+			&:last-child{text-align: right;}
+		}
+		
+	}
 </style>
 <template>
 	<div class="listPage" :class="{pt50rem:fix}"  transition="expand">
@@ -30,8 +37,14 @@
 				</div>
 			</div>
 			<div class="cate-filter">
-				<a href="javascript:void(0);">REFINE</a>
-				<a href="javascript:void(0);">SORT BY</a>
+				<a href="javascript:void(0);"><i class="iconfont icon-filter"></i> REFINE</a>
+				<a href="javascript:void(0);"><i class="iconfont icon-sort"></i> SORT BY</a>
+			</div>
+
+			<div class="pro-list clearfix">
+				<ul>
+					<pro-list></pro-list>
+				</ul>
 			</div>
 		</div>
 		<page-footer></page-footer>
@@ -41,6 +54,8 @@
 <script>
 	import pageHead from '../components/header.vue';
 	import pageFooter from '../components/footer.vue';
+	import proList from'../components/pro-list.vue';
+
 	export default{
         data(){
             return{
@@ -50,7 +65,7 @@
             }
         },
         components:{
-        	pageHead,pageFooter
+        	pageHead,pageFooter,proList
         }
     }
 </script>

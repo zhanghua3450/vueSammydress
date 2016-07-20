@@ -36,14 +36,21 @@ module.exports = {
         loader: 'babel',
         exclude: /node_modules/
      },
-     {
-         test:/\.less$/,
-         loader:'style!less!css',
-         exclude: /node_modules/
-     },
+     // {
+     //     test:/\.less$/,
+     //     loader:'style!less!css',
+     //     exclude: /node_modules/
+     // },
+
+     
      {
          test:/\.css$/,
          loader:ExtractTextPlugin.extract("style-loader", "css-loader")
+     },
+     {
+         test:/\.less$/,
+         loader:ExtractTextPlugin.extract("style-loader", "less-loader!css-loader"),
+        exclude: /node_modules/
      },
     //   {
     //     test: /\.json$/,
@@ -63,6 +70,12 @@ module.exports = {
       }
     ]
   },
+  vue:{
+    loaders:{
+      less:ExtractTextPlugin.extract('vue-style-loader', 'css!less'),
+      css:ExtractTextPlugin.extract('vue-style-loader', 'css')
+    }
+  },
   devServer: {
     historyApiFallback: true,
     noInfo: true
@@ -77,7 +90,9 @@ module.exports = {
   },
   //devtool: '#eval-source-map',
   plugins:[
-    new ExtractTextPlugin(common.css),
+    new ExtractTextPlugin(common.css,{
+      allChunks: true
+    }),
      //公用js文件
     new webpack.optimize.CommonsChunkPlugin('vendor', common.js),
     //全局变量

@@ -6,8 +6,6 @@ Vue.use(VueRouter);
 import vueTouch from 'vue-touch';
 Vue.use(vueTouch);
 
-var VueAsyncData = require('vue-async-data');
-Vue.use(VueAsyncData);
 
 var VueResource = require('vue-resource');
 Vue.use(VueResource);
