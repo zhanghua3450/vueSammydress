@@ -53,7 +53,7 @@
 
        <ul class="catList clearfix">
            <li v-for="cate in cateList">
-               <a v-link="{ name: 'list', params: { listId: cate.listId }}" ><img :src="cate.src" ><p v-text="cate.name"></p></a>
+               <a v-link="{ name: 'list', params: { listId: cate.listId }}" ><img  :src="cate.src" ><p v-text="cate.name"></p></a>
            </li>
        </ul>
 
@@ -73,7 +73,7 @@
     //   loading: '/static/img/lazyload.gif',
     //   try: 3
     // })
-
+    // alert(111)
     import pageHead from '../components/header.vue';
     import { Swipe, SwipeItem } from 'vue-swipe';
     import pageFooter from '../components/footer.vue';
@@ -97,7 +97,6 @@
             data:function(transition){
                 Indicator.open('Loading...');
                 this.$http.get('/static/json/index.json',{}).then(function(response) {
-                    
                     transition.next({
                        cateList: response.data.cateList,
                        bannerList:response.data.bannerList
