@@ -19,7 +19,7 @@
 			<img :src="item.img">
 		</div>
 		<p class="price">
-			<span v-text="item.price"></span>
+			<span v-text="item.price | bizhong bzicon huilv"></span>
 		</p>
 	
 	</li>
@@ -27,9 +27,11 @@
 </template>
 
 <script type="text/javascript">
+	import minix from '../js/minix.js';
 
 	export default {
-		props:['lists']
-		
+		props:['lists'],
+		mixins:[minix.mixin_bizhong]		
 	}
+	
 </script>

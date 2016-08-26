@@ -1,5 +1,5 @@
 import VueRouter from 'vue-router';
-
+import filter from './js/filter.js';
 import routerMap from './js/router.js';
 Vue.use(VueRouter);
 

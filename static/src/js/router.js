@@ -18,5 +18,17 @@ export default function(router){
 		      require(['../view/list.vue'], resolve)
 		    }
 	    }
-	})
+	});
+	 //默认List主页
+    router.redirect({
+        '/':"/home"
+    });
+	//注册路由切换前
+	router.beforeEach(function (transition) {
+	    transition.next();
+
+	});
+	
 }
+
+

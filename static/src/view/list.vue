@@ -22,11 +22,13 @@
 	.infinite-status-tips{font-size: 20/32rem !important;}
 </style>
 <template>
+
 	<div class="listPage" :class="{pt50rem:fix}"  transition="expand">
 		<page-head :fixed="fix" :show-search="showSearch"></page-head>
 		<div class="page-main">
+
 			<div class="cur-cate">
-				<h1>Women</h1>
+				<h1>WOMAN</h1>
 				<div class="cur-cate-list" v-show="showList">
 					<header>
 						<h2>Shop woman by Category</h2>
@@ -47,11 +49,12 @@
 			<div class="pro-list clearfix">
 				
 				<ul>
-					<pro-list :lists="lists"></pro-list>
+					<pro-list :lists="lists" :bzicon="bzicon"></pro-list>
 					<infinite-loading :distance="distance" :on-infinite="onInfinite" v-if="isLoadedAllData"></infinite-loading>
 				</ul>
 			</div>
 		</div>
+
 		<page-footer></page-footer>
 	</div>
 </template>
@@ -61,11 +64,19 @@
 	import pageFooter from '../components/footer.vue';
 	import proList from'../components/pro-list.vue';
 	import Indicator from 'vue-indicator';
+	
+
 	import '../css/indicator.css';
 
 	import InfiniteLoading from 'vue-infinite-loading';
 	
 	export default{
+		route:{
+			data(){
+				this.onInfinite();
+			}
+		},
+		
         data(){
             return{
                fix:true,
@@ -77,14 +88,14 @@
         },
         methods:{
         	onInfinite(){
-        		Indicator.open('Loading...');
+        		//Indicator.open('Loading...');
         		++ this.curpage;
         		this.$http.get('/static/json/list.json',{params:{curpage:this.curpage}}).then(function(response){
         			
         			response.data.lists.map((index, elem)=>{
         				this.lists.push(index)
         			});
-        			Indicator.close();
+        			//Indicator.close();
         			if(this.curpage < response.data.pageall){
         				this.$broadcast('$InfiniteLoading:loaded');
         			}else{
@@ -95,14 +106,6 @@
         },
         components:{
         	pageHead,pageFooter,proList, InfiniteLoading
-        },
-        created:function(){
-			this.$on('viewportenter', function () {
-			            console.log('I have entered the viewport.')
-			        })
-			        this.$on('viewportleave', function () {
-			            console.log('I have left the viewport.')
-			        })
-		}
+        }
     }
 </script>

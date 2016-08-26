@@ -33,7 +33,7 @@
 				<i class="colum-icon iconfont icon-jiahao1"></i>
 			</label>
 			<ul class="colum-list">
-				<li v-for="item in currencyItem" data-icon="{{item.icon}}" v-text="item.name"></li>
+				<li v-for="item in currencyItem"  v-touch:tap="changeBizhong" data-bzname="{{item.name}}" data-icon="{{item.icon}}" v-text="item.name"></li>
 			</ul>
 		</div>
 
@@ -94,8 +94,37 @@
 		methods:{
 			toggole(index){
 				this.curIndex = this.curIndex == index ? '-1' : index;
-
-
+			},
+			changeBizhong(event){
+				let  icon = $(event.target).data('icon');
+				let  bzname = $(event.target).data('bzname')
+				let  store = window.localStorage;
+				let my_array = new Array();
+					my_array['USD'] = 1
+					my_array['RUB'] = 65.41568;
+					my_array['EUR'] = 0.89386717;
+					my_array['GBP'] = 0.76598299;
+					my_array['AUD'] = 1.3268067;
+					my_array['CHF'] = 0.97311783;
+					my_array['HKD'] = 7.8313481;
+					my_array['CNY'] = 5.97;
+					my_array['NZD'] = 1.3845787;
+					my_array['CAD'] = 1.3048392;
+					my_array['JPY'] = 101.26765;
+					my_array['BRL'] = 3.2691377;
+					my_array['CLP'] = 679.22197;
+					my_array['NOK'] = 8.2845856;
+					my_array['DKK'] = 6.6529508;
+					my_array['SEK'] = 8.4615578;
+					my_array['ILS'] = 3.8138711;
+					my_array['THB'] = 34.980037;
+					my_array['IDR'] = 13386.6208;
+					my_array['MYR'] = 4.0787234;
+					my_array['SGD'] = 1.3654695;
+					my_array['PHP'] = 46.95793;
+					my_array['TWD'] = 32.076388;
+				store.setItem('bzicon',icon);
+            	store.setItem('huilv',my_array[bzname]);
 			}
 		},
 
