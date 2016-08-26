@@ -28,10 +28,9 @@
 
 <script type="text/javascript">
 	import minix from '../js/minix.js';
-
 	export default {
 		props:['lists'],
-		mixins:[minix.mixin_bizhong]		
+		mixins:[minix.mixin_bizhong] 		
 	}
 	
 </script>
