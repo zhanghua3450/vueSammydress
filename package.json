@@ -44,6 +44,7 @@
     "vue-style-loader": "^1.0.0",
     "vue-swipe": "^0.2.6",
     "vue-touch": "^1.1.0",
+    "vuex": "^0.8.2",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.0",
     "webpack-zepto": "0.0.1"
