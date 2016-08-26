@@ -17,13 +17,18 @@
 		}
 		
 	}
+	.icon-loading{width: 30/32rem!important; height: 30/32rem!important; font-size: 30/32rem!important; line-height: 30/32rem!important;}
+	.pro-list{padding-bottom: 20px;}
+	.infinite-status-tips{font-size: 20/32rem !important;}
 </style>
 <template>
+
 	<div class="listPage" :class="{pt50rem:fix}"  transition="expand">
 		<page-head :fixed="fix" :show-search="showSearch"></page-head>
 		<div class="page-main">
+
 			<div class="cur-cate">
-				<h1>Women</h1>
+				<h1>WOMAN</h1>
 				<div class="cur-cate-list" v-show="showList">
 					<header>
 						<h2>Shop woman by Category</h2>
@@ -42,11 +47,14 @@
 			</div>
 
 			<div class="pro-list clearfix">
+				
 				<ul>
-					<pro-list></pro-list>
+					<pro-list :lists="lists" :bzicon="bzicon"></pro-list>
+					<infinite-loading :distance="distance" :on-infinite="onInfinite" v-if="isLoadedAllData"></infinite-loading>
 				</ul>
 			</div>
 		</div>
+
 		<page-footer></page-footer>
 	</div>
 </template>
@@ -55,17 +63,49 @@
 	import pageHead from '../components/header.vue';
 	import pageFooter from '../components/footer.vue';
 	import proList from'../components/pro-list.vue';
+	import Indicator from 'vue-indicator';
+	
 
+	import '../css/indicator.css';
+
+	import InfiniteLoading from 'vue-infinite-loading';
+	
 	export default{
+		route:{
+			data(){
+				this.onInfinite();
+			}
+		},
+		
         data(){
             return{
-                fix:true,
-                bannerList:[ ],
-                cateList:[]
+               fix:true,
+               lists:[],
+               distance:10,
+               isLoadedAllData:true,
+               curpage:0
             }
         },
+        methods:{
+        	onInfinite(){
+        		//Indicator.open('Loading...');
+        		++ this.curpage;
+        		this.$http.get('/static/json/list.json',{params:{curpage:this.curpage}}).then(function(response){
+        			
+        			response.data.lists.map((index, elem)=>{
+        				this.lists.push(index)
+        			});
+        			//Indicator.close();
+        			if(this.curpage < response.data.pageall){
+        				this.$broadcast('$InfiniteLoading:loaded');
+        			}else{
+        				this.$broadcast('$InfiniteLoading:noMore');
+        			}
+        		})
+        	}
+        },
         components:{
-        	pageHead,pageFooter,proList
+        	pageHead,pageFooter,proList, InfiniteLoading
         }
     }
 </script>
