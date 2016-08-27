@@ -64,11 +64,10 @@
 	import pageFooter from '../components/footer.vue';
 	import proList from'../components/pro-list.vue';
 	import Indicator from 'vue-indicator';
-	
-
 	import '../css/indicator.css';
-
 	import InfiniteLoading from 'vue-infinite-loading';
+
+	import store from '../store/store.js'
 	
 	export default{
 		route:{
@@ -106,6 +105,8 @@
         },
         components:{
         	pageHead,pageFooter,proList, InfiniteLoading
-        }
+        },
+		
+		store:store
     }
 </script>
