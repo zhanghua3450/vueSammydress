@@ -3,7 +3,7 @@
 		<div :class="{fixed:fixed,'show':opened}" class="appTop ">
 			<div class="memu">
 				<a href="javascript:void(0);" v-touch:tap="toggle"><i class="iconfont icon-caidan"></i></a>
-				<a href="#"><i class="iconfont icon-sousuo"></i></a>
+				<a v-link="{name:'search'}"><i class="iconfont icon-sousuo"></i></a>
 			</div>
 			<div class="logo"><a href="/"><img src="/static/img/logo.gif"></a></div>
 			<div class="cart">

@@ -8,7 +8,7 @@ function gotCurency(){
     if(storage){
         bizhong = storage.getItem('bizhong');
         if(!bizhong){
-            storage.getItem('bizhong','USD');
+            storage.setItem('bizhong','USD');
             bizhong = 'USD'
         }
     }
@@ -75,9 +75,10 @@ const state = {
 // 创建一个对象存储一系列我们接下来要写的 mutation 函数
 const mutations = {
      // TODO: 放置我们的状态变更函数
-     changeBizhong (state,bizhong){
+     CHANGE_BIZHONG (state,bizhong){
          state.icon = gotIcon(bizhong);
          state.huilv = gotHuiv(bizhong);
+         window.localStorage.setItem('bizhong',bizhong);
      }
      
 }

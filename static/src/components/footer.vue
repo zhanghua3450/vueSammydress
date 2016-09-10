@@ -33,7 +33,7 @@
 				<i class="colum-icon iconfont icon-jiahao1"></i>
 			</label>
 			<ul class="colum-list">
-				<li v-for="item in currencyItem"  v-touch:tap="increment" data-bzname="{{item.name}}" data-icon="{{item.icon}}" v-text="item.name"></li>
+				<li v-for="item in currencyItem"  @click="changeBizhong" data-bzname="{{item.name}}" data-icon="{{item.icon}}" v-text="item.name"></li>
 			</ul>
 		</div>
 
@@ -63,8 +63,13 @@
 </template>
 
 <script >
-	import { incrementCounter } from '../store/action'
+	import { changeBizhong } from '../store/action.js'
 	export default{
+		vuex:{
+			actions:{
+				changeBizhong
+			}
+		},
 		data(){
 			return {
 				curIndex:'-1',
@@ -126,11 +131,7 @@
 				store.setItem('bzicon',icon);
             	store.setItem('huilv',my_array[bzname]);
 			}
-		},
-		vuex:{
-			actions:{
-				increment:incrementCounter
-			}
 		}
+		
 	}
 </script>

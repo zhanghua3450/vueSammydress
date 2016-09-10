@@ -20,6 +20,7 @@
 	.icon-loading{width: 30/32rem!important; height: 30/32rem!important; font-size: 30/32rem!important; line-height: 30/32rem!important;}
 	.pro-list{padding-bottom: 20px;}
 	.infinite-status-tips{font-size: 20/32rem !important;}
+	.popPanel{width: 80%; height: 100%;}
 </style>
 <template>
 
@@ -42,8 +43,8 @@
 				</div>
 			</div>
 			<div class="cate-filter">
-				<a href="javascript:void(0);"><i class="iconfont icon-filter"></i> REFINE</a>
-				<a href="javascript:void(0);"><i class="iconfont icon-sort"></i> SORT BY</a>
+				<a ><i class="iconfont icon-filter"></i> REFINE</a>
+				<a @click="showActionsheet()"><i class="iconfont icon-sort"></i> SORT BY</a>
 			</div>
 
 			<div class="pro-list clearfix">
@@ -56,6 +57,12 @@
 		</div>
 
 		<page-footer></page-footer>
+		<mt-popup :visible.sync="popup.visible"  position="left" class="popPanel">
+		  ...
+		</mt-popup>
+
+		<mt-actionsheet :actions="actionsheet.actions" :visible.sync="actionsheet.visible"></mt-actionsheet>
+
 	</div>
 </template>
 
@@ -66,8 +73,10 @@
 	import Indicator from 'vue-indicator';
 	import '../css/indicator.css';
 	import InfiniteLoading from 'vue-infinite-loading';
-
-	import store from '../store/store.js'
+   
+   import { Popup,Actionsheet } from 'mint-ui';
+   	Vue.component(Actionsheet.name, Actionsheet);
+	Vue.component(Popup.name, Popup);	
 	
 	export default{
 		route:{
@@ -82,10 +91,35 @@
                lists:[],
                distance:10,
                isLoadedAllData:true,
-               curpage:0
+               curpage:0,
+
+               popup:{
+            		visible:false
+               },
+
+               actionsheet:{
+               		visible:false,
+               		actions:[
+               			{name:'Hot',method:this.actionSheetMethod},
+               			{name:'New',method:this.actionSheetMethod},
+               			{name:'Facebook Likes'},
+               			{name:'Recommended'},
+               			{name:'Price - Low to High'}
+               		]
+               }
+               
+               
             }
         },
+   
         methods:{
+        	actionSheetMethod(){
+        		var targetObj = event.target;
+        		
+        		this.$route.router.go({ name: 'list', params: { listId: targetObj.innerText }})
+        		//router.go({ name: 'list', params: { listId: targetObj.innerText }})
+        		
+        	},
         	onInfinite(){
         		//Indicator.open('Loading...');
         		++ this.curpage;
@@ -101,12 +135,16 @@
         				this.$broadcast('$InfiniteLoading:noMore');
         			}
         		})
+        	},
+        	showPopUp(){
+        		this.popup.visible = true;
+        	},
+        	showActionsheet(){
+        		this.actionsheet.visible = true;
         	}
         },
         components:{
         	pageHead,pageFooter,proList, InfiniteLoading
-        },
-		
-		store:store
+        }
     }
 </script>

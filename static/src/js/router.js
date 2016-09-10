@@ -17,7 +17,13 @@ export default function(router){
 	        component: function (resolve) {
 		      require(['../view/list.vue'], resolve)
 		    }
-	    }
+	    },
+		'/search':{
+			name:'search',
+			component(resolve){
+				require(['../view/search.vue'],resolve)
+			}
+		}
 	});
 	 //默认List主页
     router.redirect({
