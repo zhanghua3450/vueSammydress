@@ -19,8 +19,8 @@
 			<img :src="item.img">
 		</div>
 		<p class="price">
-			<!--<span v-text="item.price | bizhong bzicon huilv"></span>-->
-			<span>{{counterValue}}</span>
+			<span v-text="item.price | bizhong getCurrecy.icon getCurrecy.huilv"></span>
+			
 		</p>
 	
 	</li>
@@ -29,14 +29,14 @@
 
 <script type="text/javascript">
 	import minix from '../js/minix.js';
-	import {getCount} from '../store/mutations.js';
+	import {getCurrecy} from '../store/mutations.js';
 
 	export default {
 		props:['lists'],
 		mixins:[minix.mixin_bizhong],
 		vuex:{
 			getters:{
-				counterValue:getCount
+				getCurrecy:getCurrecy
 			}
 		}
 	}

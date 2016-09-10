@@ -1,6 +1,9 @@
 import VueRouter from 'vue-router';
 import filter from './js/filter.js';
 import routerMap from './js/router.js';
+
+import store from './store/store.js'
+
 Vue.use(VueRouter);
 
 import vueTouch from 'vue-touch';
@@ -22,5 +25,5 @@ var router = new VueRouter({
 
 routerMap(router);
 
-var App = Vue.extend({});
+var App = Vue.extend({store:store});
 router.start(App,'#app');
