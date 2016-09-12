@@ -18,9 +18,16 @@
 		
 	}
 	.icon-loading{width: 30/32rem!important; height: 30/32rem!important; font-size: 30/32rem!important; line-height: 30/32rem!important;}
-	.pro-list{padding-bottom: 20px;}
+	.pro-list{padding-bottom: 20/32rem;}
 	.infinite-status-tips{font-size: 20/32rem !important;}
 	.popPanel{width: 80%; height: 100%;}
+
+	.popupScroll{overflow-y: auto; -webkit-overflow-scrolling: touch; position: relative; width: 100%; 
+		height: 100%;
+		.mint-cell{font-size: 12/32rem;}
+		.mint-checklist-title{font-size: 12/32rem; line-height: 30/32rem; font-weight: bold; text-transform: uppercase;}
+		.popBottom{padding: 5/32rem;}
+	}
 </style>
 <template>
 
@@ -43,8 +50,8 @@
 				</div>
 			</div>
 			<div class="cate-filter">
-				<a ><i class="iconfont icon-filter"></i> REFINE</a>
-				<a @click="showActionsheet()"><i class="iconfont icon-sort"></i> SORT BY</a>
+				<a @click="showPopUp"><i class="iconfont icon-filter"></i> REFINE</a>
+				<a @click="showActionsheet"><i class="iconfont icon-sort"></i> SORT BY</a>
 			</div>
 
 			<div class="pro-list clearfix">
@@ -58,10 +65,20 @@
 
 		<page-footer></page-footer>
 		<mt-popup :visible.sync="popup.visible"  position="left" class="popPanel">
-		  ...
+			<div class="popupScroll">
+				<mt-checklist v-for="list in checklist"
+				  	:title="list.title"
+				  	:value.sync="list.value"
+				  	:options="list.options">
+				</mt-checklist>
+
+				<div class="popBottom">
+					<mt-button type="danger" size="large" @click="getFiletValue">Apply</mt-button>
+				</div>
+			</div>
 		</mt-popup>
 
-		<mt-actionsheet :actions="actionsheet.actions" :visible.sync="actionsheet.visible"></mt-actionsheet>
+		<mt-actionsheet :actions="actionsheet.actions" :visible.sync="actionsheet.visible" :cancel-text="actionsheet.cancel"></mt-actionsheet>
 
 	</div>
 </template>
@@ -70,14 +87,15 @@
 	import pageHead from '../components/header.vue';
 	import pageFooter from '../components/footer.vue';
 	import proList from'../components/pro-list.vue';
-	import Indicator from 'vue-indicator';
-	import '../css/indicator.css';
+	// import Indicator from 'vue-indicator';
+	// import '../css/indicator.css';
 	import InfiniteLoading from 'vue-infinite-loading';
    
-   import { Popup,Actionsheet } from 'mint-ui';
+   import { Popup,Actionsheet,Checklist,Button} from 'mint-ui';
    	Vue.component(Actionsheet.name, Actionsheet);
-	Vue.component(Popup.name, Popup);	
-	
+	Vue.component(Popup.name, Popup);
+	Vue.component(Checklist.name, Checklist);	
+	Vue.component(Button.name, Button);
 	export default{
 		route:{
 			data(){
@@ -102,28 +120,38 @@
                		actions:[
                			{name:'Hot',method:this.actionSheetMethod},
                			{name:'New',method:this.actionSheetMethod},
-               			{name:'Facebook Likes'},
-               			{name:'Recommended'},
-               			{name:'Price - Low to High'}
-               		]
-               }
-               
+               			{name:'Facebook Likes',method:this.actionSheetMethod},
+               			{name:'Recommended',method:this.actionSheetMethod},
+               			{name:'Price - Low to High',method:this.actionSheetMethod}
+               		],
+               		cancel:"Cancel"
+               },
+
+               checklist:[
+               		{title:"Featured",value:[],options:[{label:"On sale",value:"0"},{label:"Priority Dispatch",value:"1"},{label:"Free Shipping",value:"2"}]},
+               		{title:"Size",value:[],options:[{label:"One Size",value:"0"},{label:"S",value:"1"},{label:"M",value:"2"},{label:"M",value:"3"},{label:"L",value:"4"}]},
+               		{title:"Style",value:[],options:[{label:"Casual1",value:"0"},{label:"Sexy & Club",value:"1"},{label:"Brief",value:"2"},{label:"Novelty",value:"3"}]}
+               ]
                
             }
         },
    
         methods:{
         	actionSheetMethod(){
+        		this.curpage = 0;
         		var targetObj = event.target;
+
+        		this.$route.router.go({query:{sortBy:targetObj.innerText }})
         		
-        		this.$route.router.go({ name: 'list', params: { listId: targetObj.innerText }})
-        		//router.go({ name: 'list', params: { listId: targetObj.innerText }})
         		
         	},
         	onInfinite(){
         		//Indicator.open('Loading...');
+
         		++ this.curpage;
-        		this.$http.get('/static/json/list.json',{params:{curpage:this.curpage}}).then(function(response){
+        		let params = Object.assign({},this.$route.params,this.$route.query,{curpage:this.curpage})
+        		
+        		this.$http.get('/static/json/list.json',{params:params}).then(function(response){
         			
         			response.data.lists.map((index, elem)=>{
         				this.lists.push(index)
@@ -141,6 +169,12 @@
         	},
         	showActionsheet(){
         		this.actionsheet.visible = true;
+        	},
+        	getFiterItems(){
+        		let params = Object.assign({},this.$route.params,this.$route.query,{curpage:this.curpage})
+        	},
+        	getFiletValue(){
+        		this.popup.visible = false;
         	}
         },
         components:{

@@ -47,7 +47,7 @@
 
        <swipe class="swipe"  :auto="4000">
              <swipe-item   v-for="banner in bannerList">
-                 <a :href="banner.url"><img :src="banner.src"></a>
+                 <a v-link="banner.url"><img :src="banner.src"></a>
              </swipe-item>
        </swipe>
 

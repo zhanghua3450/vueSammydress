@@ -1,17 +1,17 @@
 {
 	"bannerList":[
-	    {"src":"http://uidesign.sammydress.com/S/images/promotion/Clearance/640x270ena.jpg", "url":"#", "width":640,"height":270},
-	    {"src":"http://uidesign.sammydress.com/S/images/promotion/Beautiful/640x270.jpg","url":"#", "width":640,"height":270},
-	    {"src":"http://css.sammydress.com/imagecache/S/images/pageimg/special/dress/640.jpg","url":"#", "width":640,"height":270}
+	    {"src":"http://uidesign.sammydress.com/S/images/promotion/Clearance/640x270ena.jpg", "url":"list/banner1", "width":640,"height":270},
+	    {"src":"http://uidesign.sammydress.com/S/images/promotion/Beautiful/640x270.jpg","url":"list/banner2", "width":640,"height":270},
+	    {"src":"http://css.sammydress.com/imagecache/S/images/pageimg/special/dress/640.jpg","url":"list/banner3", "width":640,"height":270}
 	],
 	"cateList":[
-	    {"listId":"123","name":"women","src":"http://uidesign.sammydress.com/S/images/banner/sm/women.jpg"},
-	    {"listId":"123","name":"men","src":"http://uidesign.sammydress.com/S/images/banner/sm/men.jpg"},
-	    {"listId":"123","name":"Shoes","src":"http://uidesign.sammydress.com/S/images/banner/sm/shoes.jpg"},
-	    {"listId":"123","name":"bags","src":"http://uidesign.sammydress.com/S/images/banner/sm/bag.jpg"},
-	    {"listId":"123","name":"hair","src":"http://uidesign.sammydress.com/S/images/banner/sm/hair.jpg"},
-	    {"listId":"123","name":"JEWELRY","src":"http://uidesign.sammydress.com/S/images/banner/sm/jew.jpg"},
-	    {"listId":"123","name":"KIDS","src":"http://uidesign.sammydress.com/S/images/banner/sm/kids.jpg"},
-	    {"listId":"123","name":"HOME&GARDEN","src":"http://uidesign.sammydress.com/S/images/banner/sm/home.jpg"}
+	    {"listId":"women","name":"women","src":"http://uidesign.sammydress.com/S/images/banner/sm/women.jpg"},
+	    {"listId":"men","name":"men","src":"http://uidesign.sammydress.com/S/images/banner/sm/men.jpg"},
+	    {"listId":"Shoes","name":"Shoes","src":"http://uidesign.sammydress.com/S/images/banner/sm/shoes.jpg"},
+	    {"listId":"bags","name":"bags","src":"http://uidesign.sammydress.com/S/images/banner/sm/bag.jpg"},
+	    {"listId":"hair","name":"hair","src":"http://uidesign.sammydress.com/S/images/banner/sm/hair.jpg"},
+	    {"listId":"JEWELRY","name":"JEWELRY","src":"http://uidesign.sammydress.com/S/images/banner/sm/jew.jpg"},
+	    {"listId":"KIDS","name":"KIDS","src":"http://uidesign.sammydress.com/S/images/banner/sm/kids.jpg"},
+	    {"listId":"HOME&GARDEN","name":"HOME&GARDEN","src":"http://uidesign.sammydress.com/S/images/banner/sm/home.jpg"}
 	]
 }
