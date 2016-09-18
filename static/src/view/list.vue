@@ -91,11 +91,7 @@
 	// import '../css/indicator.css';
 	import InfiniteLoading from 'vue-infinite-loading';
    
-   import { Popup,Actionsheet,Checklist,Button} from 'mint-ui';
-   	Vue.component(Actionsheet.name, Actionsheet);
-	Vue.component(Popup.name, Popup);
-	Vue.component(Checklist.name, Checklist);	
-	Vue.component(Button.name, Button);
+
 	export default{
 		route:{
 			data(){

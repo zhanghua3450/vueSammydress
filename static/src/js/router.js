@@ -23,6 +23,12 @@ export default function(router){
 			component(resolve){
 				require(['../view/search.vue'],resolve)
 			}
+		},
+		'product/:goodsId':{
+			name:'product',
+			component(resolve){
+				require(['../view/goods.vue'],resolve)
+			}
 		}
 	});
 	 //默认List主页

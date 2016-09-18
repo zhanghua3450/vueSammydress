@@ -45,11 +45,14 @@
 
        <div class="tips" @click="showIndicator()">NEW SIGN UPS GET 10% OFF</div>
 
-       <swipe class="swipe"  :auto="4000">
-             <swipe-item   v-for="banner in bannerList">
-                 <a v-link="banner.url"><img :src="banner.src"></a>
-             </swipe-item>
-       </swipe>
+    
+
+       <mt-swipe :auto="0" class="swipe">
+          <mt-swipe-item v-for="banner in bannerList">
+            <a v-link="banner.url"><img :src="banner.src"></a>
+          </mt-swipe-item>
+       
+      </mt-swipe>
 
        <ul class="catList clearfix">
            <li v-for="cate in cateList">
@@ -75,7 +78,7 @@
     // })
     // alert(111)
     import pageHead from '../components/header.vue';
-    import { Swipe, SwipeItem } from 'vue-swipe';
+   
     import pageFooter from '../components/footer.vue';
 
     import Indicator from 'vue-indicator';
@@ -83,7 +86,7 @@
     import '../css/indicator.css';
     
 
-    require('vue-swipe/dist/vue-swipe.css');
+   
 
     export default{
         data(){
@@ -108,6 +111,6 @@
                 })
             }
         },
-        components:{pageHead,Swipe,SwipeItem,pageFooter}
+        components:{pageHead,pageFooter}
     }
 </script>

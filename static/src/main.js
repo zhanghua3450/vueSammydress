@@ -13,6 +13,9 @@ Vue.use(vueTouch);
 var VueResource = require('vue-resource');
 Vue.use(VueResource);
 
+import Mint from 'mint-ui';
+Vue.use(Mint);
+
 import './css/base_min.css';
 
 
