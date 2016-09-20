@@ -6,19 +6,19 @@ export default function(router){
 		      require(['../view/loadpage.vue'], resolve)
 		    }
 	    },
-		'/home': {
+		'home': {
 	        name:'home',
 	        component: function (resolve) {
 		      require(['../view/home.vue'], resolve)
 		    }
 	    },
-	    '/list/:listId': {
+	    'list/:listId': {
 	        name:'list',
 	        component: function (resolve) {
 		      require(['../view/list.vue'], resolve)
 		    }
 	    },
-		'/search':{
+		'search':{
 			name:'search',
 			component(resolve){
 				require(['../view/search.vue'],resolve)
@@ -38,7 +38,6 @@ export default function(router){
 	//注册路由切换前
 	router.beforeEach(function (transition) {
 	    transition.next();
-
 	});
 	
 }

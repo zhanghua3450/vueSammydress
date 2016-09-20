@@ -31,8 +31,8 @@
 </style>
 <template>
 
-	<div class="listPage" :class="{pt50rem:fix}"  transition="expand">
-		<page-head :fixed="fix" :show-search="showSearch"></page-head>
+	<div class="listPage pt50rem"   transition="expand">
+		<page-head></page-head>
 		<div class="page-main">
 
 			<div class="cur-cate">
@@ -90,7 +90,7 @@
 	// import Indicator from 'vue-indicator';
 	// import '../css/indicator.css';
 	import InfiniteLoading from 'vue-infinite-loading';
-   
+   import URL from '../js/ajaxURL';
 
 	export default{
 		route:{
@@ -101,7 +101,7 @@
 		
         data(){
             return{
-               fix:true,
+              
                lists:[],
                distance:10,
                isLoadedAllData:true,
@@ -147,7 +147,7 @@
         		++ this.curpage;
         		let params = Object.assign({},this.$route.params,this.$route.query,{curpage:this.curpage})
         		
-        		this.$http.get('/static/json/list.json',{params:params}).then(function(response){
+        		this.$http.get(URL.LIST,{params:params}).then(function(response){
         			
         			response.data.lists.map((index, elem)=>{
         				this.lists.push(index)

@@ -39,9 +39,9 @@
 </style>
 
 <template>
-   <div class="home-content" :class="{pt50rem:fix}"  transition="expand">
+   <div class="home-content pt50rem"   transition="expand">
       
-       <page-head :fixed="fix" :show-search="showSearch"></page-head>
+       <page-head  ></page-head>
 
        <div class="tips" @click="showIndicator()">NEW SIGN UPS GET 10% OFF</div>
 
@@ -82,16 +82,16 @@
     import pageFooter from '../components/footer.vue';
 
     import Indicator from 'vue-indicator';
-
     import '../css/indicator.css';
-    
+
+    import URL from '../js/ajaxURL';
 
    
 
     export default{
         data(){
             return{
-                fix:true,
+                
                 bannerList:[ ],
                 cateList:[]
             }
@@ -99,7 +99,7 @@
         route:{
             data:function(transition){
                 Indicator.open('Loading...');
-                this.$http.get('/static/json/index.json',{}).then(function(response) {
+                this.$http.get(URL.INDEX,{}).then(function(response) {
                     transition.next({
                        cateList: response.data.cateList,
                        bannerList:response.data.bannerList

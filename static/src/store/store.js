@@ -71,6 +71,8 @@ const state = {
      // TODO: 放置初始状态
      icon:gotCurency()['icon'],
      huilv:gotCurency()['huilv'],
+
+     fixHead:true
 }
 // 创建一个对象存储一系列我们接下来要写的 mutation 函数
 const mutations = {
@@ -79,6 +81,10 @@ const mutations = {
          state.icon = gotIcon(bizhong);
          state.huilv = gotHuiv(bizhong);
          window.localStorage.setItem('bizhong',bizhong);
+     },
+
+     CHANGE_FIXHEAD(state,fix){
+        state.fixHead = fix
      }
      
 }

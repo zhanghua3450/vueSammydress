@@ -8,3 +8,7 @@ export function getCurrecy(state){
   
     return currency
 }
+
+export function getFixHead(state){
+	return state.fixHead
+}

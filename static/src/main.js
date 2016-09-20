@@ -20,8 +20,9 @@ import './css/base_min.css';
 
 
 var router = new VueRouter({
-	hashbang: true,
+
     history: false,
+    hashbang:false,
     saveScrollPosition: true,
     transitionOnLoad: true
 });

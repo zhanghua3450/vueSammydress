@@ -12,7 +12,7 @@
 </style>
 <template>
 
-	<li class="pro-list-item" v-for="item in lists" >
+	<li class="pro-list-item" v-for="item in lists" v-link="{name:'product',params: {goodsId:item.goodsId} }">
 		
 		<strong class="zhekou_tag" v-if="item.zhekou - 0 > 0"><span>{{item.zhekou}}%</span>OFF</strong>
 		<div class="imgwrap">
@@ -28,15 +28,15 @@
 </template>
 
 <script type="text/javascript">
-	import minix from '../js/minix.js';
+
 	import {getCurrecy} from '../store/mutations.js';
 
 	export default {
 		props:['lists'],
-		mixins:[minix.mixin_bizhong],
+		
 		vuex:{
 			getters:{
-				getCurrecy:getCurrecy
+				getCurrecy
 			}
 		}
 	}

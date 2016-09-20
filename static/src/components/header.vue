@@ -1,6 +1,6 @@
 <template>
 	<header>
-		<div :class="{fixed:fixed,'show':opened}" class="appTop ">
+		<div :class="{fixed:getFixHead,'show':opened}" class="appTop ">
 			<div class="memu">
 				<a href="javascript:void(0);" v-touch:tap="toggle"><i class="iconfont icon-caidan"></i></a>
 				<a v-link="{name:'search'}"><i class="iconfont icon-sousuo"></i></a>
@@ -42,8 +42,17 @@
 	import menuSader from './menu.vue';
 	import menuList from './menu-list.vue';
 	
+	
+	import {getFixHead} from '../store/mutations.js'
+
 	export default {
-		props:['fixed','showSearch'],
+		
+		vuex:{
+			getters:{
+				getFixHead
+			}
+		},
+
 		data(){
 			return {
 				'opened':false,
