@@ -19,6 +19,8 @@
 			.costPrice{text-decoration: line-through; font-size: 14/32rem; color: #999; margin-right: 10/32rem;}
 			.catoof{background-color: #fe5768; color: #fff;  padding: 0 5/32rem; font-size: 12/32rem;}
 		}
+
+		.selectSizeColor{padding: 10/32rem; font-size: 14/32rem;}
 	}
 	
 </style>
@@ -53,7 +55,10 @@
 					<span class="catoof">61% OFF</span>
 				</div>
 				<p class="goods-adinfo">Processing Time: Item will be shipped out within 5-10 business days.</p>
-				
+
+				<div class="selectSizeColor">
+					<i class="iconfont icon-xiangyou1 fr"></i>SELECT:SIZE/COLOR
+				</div>
 			</mt-tab-container-item>
 		  <mt-tab-container-item id="goods-details">
 		    <mt-cell v-for="n in 4" :title="'测试 ' + n"></mt-cell>
