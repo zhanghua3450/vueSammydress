@@ -19,6 +19,13 @@
 	}
 	.icon-loading{width: 30/32rem!important; height: 30/32rem!important; font-size: 30/32rem!important; line-height: 30/32rem!important;}
 	.pro-list{padding-bottom: 20/32rem;}
+	.pro-list-wrap{
+		.tile-box{ width: 50%; float: left;
+			&:first-child{padding-right: 5/32rem;}
+			&:last-child{padding-left: 5/32rem;}
+		}
+
+	}
 	.infinite-status-tips{font-size: 20/32rem !important;}
 	.popPanel{width: 80%; height: 100%;}
 
@@ -55,11 +62,18 @@
 			</div>
 
 			<div class="pro-list clearfix">
-				
-				<ul>
-					<pro-list :lists="lists" :bzicon="bzicon"></pro-list>
+					<div class="pro-list-wrap clearfix">
+						<div class="tile-box">
+							<pro-list :lists="listseven" :bzicon="bzicon"></pro-list>
+						</div>
+						<div class="tile-box">
+							<pro-list :lists="listodd" :bzicon="bzicon"></pro-list>
+						</div>
+					</div>
+			
+					
 					<infinite-loading :distance="distance" :on-infinite="onInfinite" v-if="isLoadedAllData"></infinite-loading>
-				</ul>
+				
 			</div>
 		</div>
 
@@ -101,8 +115,12 @@
 		
         data(){
             return{
-              
-               lists:[],
+
+
+               listseven:[],
+               listodd:[],
+
+
                distance:10,
                isLoadedAllData:true,
                curpage:0,
@@ -149,8 +167,13 @@
         		
         		this.$http.get(URL.LIST,{params:params}).then(function(response){
         			
-        			response.data.lists.map((index, elem)=>{
-        				this.lists.push(index)
+        			response.data.lists.forEach((v, i)=>{
+        				if(i % 2 == 0){
+        					this.listseven.push(v);
+        				}else{
+        					this.listodd.push(v);
+        				}
+        				//this.lists.push(index)
         			});
         			//Indicator.close();
         			if(this.curpage < response.data.pageall){
