@@ -21,8 +21,8 @@
 	.pro-list{padding-bottom: 20/32rem;}
 	.pro-list-wrap{
 		.tile-box{ width: 50%; float: left;
-			&:first-child{padding-right: 5/32rem;}
-			&:last-child{padding-left: 5/32rem;}
+			&:first-child{padding-right: 5px;}
+			&:last-child{padding-left: 5px;}
 		}
 
 	}
