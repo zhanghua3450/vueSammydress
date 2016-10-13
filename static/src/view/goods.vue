@@ -6,8 +6,10 @@
 	}
 
 	.goodsPage{
-		.mint-navbar {
-			.mint-tab-item{ padding: 17/32rem 0;}
+		.mint-navbar {border-bottom: 1px solid #ddd;
+			.mint-tab-item{ padding: 17/32rem 0;
+				&.is-selected{color:#fe5768; border-bottom-color:#fe5768; }
+			}
 		}
 		.mint-tab-item-label{font-size: 14/32rem; text-transform: uppercase;}
 
@@ -26,13 +28,13 @@
 <template>
 	<div class="goodsPage pt50rem"  transition="expand">
 		<!-- <page-head></page-head> -->
-		<mt-navbar class="page-part" :fixed="topFix" :selected.sync="selected">
+		<mt-navbar class="page-part" :fixed="mtNavbar.topFix" :selected.sync="mtNavbar.selected">
 			<mt-tab-item id="goods-basic">basic</mt-tab-item>
 			<mt-tab-item id="goods-details">details </mt-tab-item>
 			<mt-tab-item id="goods-comment">comment</mt-tab-item>
 		</mt-navbar>
 		<!-- tab-container -->
-		<mt-tab-container :active.sync="selected">
+		<mt-tab-container :active.sync="mtNavbar.selected">
 			<mt-tab-container-item id="goods-basic">
 				<mt-swipe :auto="0" class="goods-swipe">
 					<mt-swipe-item>
@@ -75,10 +77,16 @@
 	export default{
 		data(){
 			return{
-				selected:"goods-basic",
-				topFix:true
+				mtNavbar:{
+					selected:"goods-basic",
+					topFix:true
+				}
+				
 			}
 		},
-		components:{pageHead}
+		components:{pageHead},
+		created(){
+			
+		}
 	}
 </script>
